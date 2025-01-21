@@ -4,17 +4,17 @@ import com.erebelo.springaidemo.model.Answer;
 import com.erebelo.springaidemo.model.CapitalRequest;
 import com.erebelo.springaidemo.model.Question;
 import com.erebelo.springaidemo.service.OpenAIService;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 @Slf4j
 @Service
@@ -48,20 +48,28 @@ public class OpenAIServiceImpl implements OpenAIService {
     @Override
     public Answer getCapital(CapitalRequest capitalRequest) {
         log.info("Fetching capital");
+        BeanOutputConverter<Answer> converter = new BeanOutputConverter<>(Answer.class);
+        String format = converter.getFormat();
+
         PromptTemplate promptTemplate = new PromptTemplate(capitalPrompt);
-        Prompt prompt = promptTemplate.create(Map.of("stateOrCountry", capitalRequest.stateOrCountry()));
+        Prompt prompt = promptTemplate
+                .create(Map.of("stateOrCountry", capitalRequest.stateOrCountry(), "format", format));
         ChatResponse response = chatModel.call(prompt);
 
-        return new Answer(response.getResult().getOutput().getContent());
+        return converter.convert(response.getResult().getOutput().getContent());
     }
 
     @Override
     public Answer getCapitalInfo(CapitalRequest capitalRequest) {
         log.info("Fetching capital and info");
+        BeanOutputConverter<Answer> converter = new BeanOutputConverter<>(Answer.class);
+        String format = converter.getFormat();
+
         PromptTemplate promptTemplate = new PromptTemplate(capitalInfoPrompt);
-        Prompt prompt = promptTemplate.create(Map.of("stateOrCountry", capitalRequest.stateOrCountry()));
+        Prompt prompt = promptTemplate
+                .create(Map.of("stateOrCountry", capitalRequest.stateOrCountry(), "format", format));
         ChatResponse response = chatModel.call(prompt);
 
-        return new Answer(response.getResult().getOutput().getContent());
+        return converter.convert(response.getResult().getOutput().getContent());
     }
 }
