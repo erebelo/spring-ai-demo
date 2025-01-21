@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "97c7d448-4e3a-4eb8-a879-2b3bac81e3ed",
+		"name": "Spring AI Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16363964"
+	},
+	"item": [
+		{
+			"name": "OpenAI",
+			"item": [
+				{
+					"name": "Ask",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"question\": \"What is the capital of Colombia?\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/spring-ai-demo/openai/ask",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spring-ai-demo",
+								"openai",
+								"ask"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Capital",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"stateOrCountry\": \"California\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/spring-ai-demo/openai/capital",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spring-ai-demo",
+								"openai",
+								"capital"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Capital & Info",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"stateOrCountry\": \"Japan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/spring-ai-demo/openai/capital/info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spring-ai-demo",
+								"openai",
+								"capital",
+								"info"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
