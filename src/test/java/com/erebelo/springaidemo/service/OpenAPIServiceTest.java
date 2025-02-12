@@ -8,11 +8,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 class OpenAPIServiceTest {
 
     @Autowired
-    private OpenAIService openAIService;
+    private OpenAIService service;
 
     @Test
     void getAnswerSuccessfully() {
-        String answer = openAIService.getAnswer("Tell me a dad joke.");
+        String answer = service.getAnswer("Tell me a dad joke.");
         System.out.println("Got the answer");
         System.out.println(answer);
     }
