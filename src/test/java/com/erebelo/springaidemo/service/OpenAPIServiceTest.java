@@ -11,7 +11,7 @@ class OpenAPIServiceTest {
     private OpenAIService service;
 
     @Test
-    void getAnswerSuccessfully() {
+    void getAnswerSuccessful() {
         String answer = service.getAnswer("Tell me a dad joke.");
         System.out.println("Got the answer");
         System.out.println(answer);
