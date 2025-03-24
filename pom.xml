@@ -6,13 +6,28 @@
     <parent>
         <groupId>com.erebelo</groupId>
         <artifactId>spring-common-parent</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>spring-ai-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-ai-demo</name>
     <description>Java project using Spring Boot AI</description>
+
+    <repositories>
+        <repository>
+            <id>github-spring-common-parent</id>
+            <url>https://maven.pkg.github.com/erebelo/spring-common-parent</url>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <properties>
         <java.version>21</java.version>
@@ -98,15 +113,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 </project>
